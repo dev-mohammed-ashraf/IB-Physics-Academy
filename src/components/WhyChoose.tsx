@@ -27,13 +27,18 @@ const whyChooseData: WhyChooseItem[] = [
 
 export default function WhyChoose() {
   return (
-    <section id="why-choose" className="scroll-mt-20 py-16 lg:py-24">
+    <section
+      id="why-choose"
+      className="scroll-mt-8 lg:scroll-mt-20 py-16 lg:py-24"
+    >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="rounded-3xl bg-gradient-to-br from-indigo-50 via-white to-indigo-50 p-6 sm:p-10 lg:p-14 dark:from-indigo-950/30 dark:via-gray-900 dark:to-indigo-950/30">
           <div className="mx-auto max-w-2xl text-center">
             <h2 className="text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl dark:text-white">
               Why Choose{" "}
-              <span className="text-indigo-600 dark:text-indigo-400">&ldquo;Get 7 with Maha&rdquo;?</span>
+              <span className="text-indigo-600 dark:text-indigo-400">
+                &ldquo;Get 7 with Maha&rdquo;?
+              </span>
             </h2>
             <p className="mt-4 text-base leading-relaxed text-gray-600 sm:text-lg dark:text-gray-400">
               A complete learning platform with the tools and support you need

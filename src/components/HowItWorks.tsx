@@ -51,7 +51,7 @@ export default function HowItWorks() {
   return (
     <section
       id="how-it-works"
-      className="scroll-mt-20 bg-gray-50 py-16 lg:py-24 mt-18 mb-4 dark:bg-gray-950"
+      className="scroll-mt-12 lg:scroll-mt-20 bg-gray-50 py-16 lg:py-24 mt-18 mb-4 dark:bg-gray-950"
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-2xl text-center">

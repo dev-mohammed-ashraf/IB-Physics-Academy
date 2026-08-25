@@ -16,7 +16,7 @@ export default function HeroSection({
       <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8 lg:py-20">
         <div className="grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
           {/* Content */}
-          <div className="text-center lg:text-left">
+          <div className="relative z-0 text-center lg:text-left">
             <span className="inline-flex items-center gap-2 rounded-full border border-indigo-200 bg-indigo-50 px-4 py-1.5 text-xs font-medium text-indigo-700 sm:text-sm dark:border-indigo-800 dark:bg-indigo-950/60 dark:text-indigo-300">
               <ShieldCheck className="size-4" />
               {badgeText}
@@ -52,9 +52,9 @@ export default function HeroSection({
           </div>
 
           {/* Image */}
-          <div className="relative mx-auto w-full max-w-lg lg:max-w-none">
+          <div className="relative z-0 mx-auto w-full max-w-lg lg:max-w-none">
             <div
-              className="absolute -inset-4 rounded-3xl bg-indigo-100/60 blur-2xl dark:bg-indigo-900/30"
+              className="pointer-events-none absolute -inset-4 -z-10 rounded-3xl bg-indigo-100/60 blur-2xl dark:bg-indigo-900/30"
               aria-hidden="true"
             />
             <Image

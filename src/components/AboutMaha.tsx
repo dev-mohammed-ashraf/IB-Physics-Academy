@@ -23,7 +23,10 @@ const highlights = [
 
 export default function AboutMaha() {
   return (
-    <section id="about-maha" className="scroll-mt-20 py-16 lg:py-8 bg-white dark:bg-gray-900">
+    <section
+      id="about-maha"
+      className="scroll-mt-8 lg:scroll-mt-20 py-16 lg:py-8 bg-white dark:bg-gray-900"
+    >
       <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
         {/* الجزء العلوي (العنوان) يظل في المنتصف */}
         <div className="flex flex-col items-center mx-auto max-w-3xl text-center">

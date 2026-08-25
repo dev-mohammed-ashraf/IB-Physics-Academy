@@ -31,7 +31,7 @@ export default function BookingSection() {
   return (
     <section
       id="book-session"
-      className="scroll-mt-20 py-16 lg:py-24"
+      className="scroll-mt-10 lg:scroll-mt-20 py-16 lg:py-24"
     >
       <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
         {/* حاوية النموذج الأساسية */}
