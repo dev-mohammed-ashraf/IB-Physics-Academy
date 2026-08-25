@@ -20,7 +20,7 @@ export default function ChaptersGrid() {
   return (
     <section
       id="chapters"
-      className="scroll-mt-8 lg:scroll-mt-20 py-16 px-4 md:px-8 max-w-7xl mx-auto w-full"
+      className="scroll-mt-12 lg:scroll-mt-20 py-16 px-4 md:px-8 max-w-7xl mx-auto w-full"
     >
       <div className="text-center mb-10">
         <h2 className="heading-animated text-3xl font-bold text-gray-900 mb-4 dark:text-white">

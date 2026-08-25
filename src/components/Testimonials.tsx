@@ -95,7 +95,7 @@ export default function Testimonials() {
     <section
       id="students-say"
       // 1. تبسيط الخلفية مع الحفاظ على وضع الـ Dark Mode
-      className="scroll-mt-20 py-16 lg:pt-24 lg:pb-30 bg-gray-50 dark:bg-gray-900"
+      className="scroll-mt-16 py-16 lg:pt-24 lg:pb-30 bg-gray-50 dark:bg-gray-900"
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-2xl text-center">
