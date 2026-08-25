@@ -16,7 +16,7 @@ const plansData: PricingPlan[] = [
   { id: 2, name: "Single Session", price: 249 },
 ];
 
-const platforms = ["Zoom", "Google Meet", "Microsoft Teams"];
+const platforms = ["Zoom", "Google Meet"];
 
 export default function BookingSection() {
   const [selectedPlanId, setSelectedPlanId] = useState<number>(
@@ -88,21 +88,43 @@ export default function BookingSection() {
               </div>
             </div>
 
-            {/* حقل رقم الهاتف */}
-            <div>
-              <label
-                htmlFor="phone"
-                className="mb-2 block text-sm font-semibold text-gray-700 dark:text-gray-300"
-              >
-                Phone Number
-              </label>
-              <input
-                id="phone"
-                name="phone"
-                type="tel"
-                placeholder="+1 555 000 0000"
-                className="w-full rounded-xl border border-gray-300 bg-gray-50 px-4 py-3 text-sm text-gray-900 outline-none transition-all focus:border-indigo-600 focus:bg-white focus:ring-1 focus:ring-indigo-600 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-indigo-400 dark:focus:bg-gray-800"
-              />
+            {/* صف الدولة والمنطقة الزمنية */}
+            <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
+              {/* حقل الدولة */}
+              <div>
+                <label
+                  htmlFor="country"
+                  className="mb-2 block text-sm font-semibold text-gray-700 dark:text-gray-300"
+                >
+                  Country
+                </label>
+                <input
+                  id="country"
+                  name="country"
+                  type="text"
+                  required
+                  placeholder="Enter your country"
+                  className="w-full rounded-xl border border-gray-300 bg-gray-50 px-4 py-3 text-sm text-gray-900 outline-none transition-all focus:border-indigo-600 focus:bg-white focus:ring-1 focus:ring-indigo-600 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-indigo-400 dark:focus:bg-gray-800"
+                />
+              </div>
+
+              {/* حقل المنطقة الزمنية */}
+              <div>
+                <label
+                  htmlFor="timezone"
+                  className="mb-2 block text-sm font-semibold text-gray-700 dark:text-gray-300"
+                >
+                  Timezone
+                </label>
+                <input
+                  id="timezone"
+                  name="timezone"
+                  type="text"
+                  required
+                  placeholder="e.g. GMT+3, EST, CET"
+                  className="w-full rounded-xl border border-gray-300 bg-gray-50 px-4 py-3 text-sm text-gray-900 outline-none transition-all focus:border-indigo-600 focus:bg-white focus:ring-1 focus:ring-indigo-600 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-indigo-400 dark:focus:bg-gray-800"
+                />
+              </div>
             </div>
 
             {/* حقل اختيار المنصة */}
@@ -116,10 +138,9 @@ export default function BookingSection() {
               <select
                 id="platform"
                 name="platform"
-                className="w-full rounded-xl border border-gray-300 bg-gray-50 px-4 py-3 text-sm text-gray-900 outline-none transition-all focus:border-indigo-600 focus:bg-white focus:ring-1 focus:ring-indigo-600 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:focus:border-indigo-400 dark:focus:bg-gray-800"
+                className="w-full appearance-none rounded-xl border border-gray-300 bg-gray-50 bg-[url('data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20fill%3D%22none%22%20viewBox%3D%220%200%2024%2024%22%20stroke-width%3D%222%22%20stroke%3D%22%236b7280%22%3E%3Cpath%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%20d%3D%22m19.5%208.25-7.5%207.5-7.5-7.5%22%2F%3E%3C%2Fsvg%3E')] bg-[length:1.25rem_1.25rem] bg-[position:right_1rem_center] bg-no-repeat px-4 pr-12 py-3 text-sm text-gray-900 outline-none transition-all focus:border-indigo-600 focus:bg-white focus:ring-1 focus:ring-indigo-600 dark:border-gray-600 dark:bg-gray-700 dark:bg-[url('data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20fill%3D%22none%22%20viewBox%3D%220%200%2024%2024%22%20stroke-width%3D%222%22%20stroke%3D%22%239ca3af%22%3E%3Cpath%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%20d%3D%22m19.5%208.25-7.5%207.5-7.5-7.5%22%2F%3E%3C%2Fsvg%3E')] dark:text-white dark:focus:border-indigo-400 dark:focus:bg-gray-800"
               >
                 <option value="zoom">Zoom</option>
-                <option value="teams">Microsoft Teams</option>
                 <option value="google-meet">Google Meet</option>
               </select>
             </div>
