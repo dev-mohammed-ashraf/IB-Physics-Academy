@@ -13,7 +13,7 @@ export default function HeroSection({
 }: Partial<HeroProps>) {
   return (
     <section className="bg-gradient-to-b from-indigo-50/60 from-0% via-indigo-50/30 via-70% to-white to-100% dark:from-indigo-950/40 dark:via-gray-900 dark:to-gray-900">
-      <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8 lg:py-20">
+      <div className="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8 lg:py-20">
         <div className="grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
           {/* Content */}
           <div className="relative z-0 text-center lg:text-left">
