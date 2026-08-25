@@ -27,7 +27,7 @@ const featuresData: Feature[] = [
 
 export default function Features() {
   return (
-    <section className="bg-white py-16 lg:py-20 dark:bg-gray-900">
+    <section className="bg-white py-16 lg:py-14 dark:bg-gray-900">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 gap-5 rounded-2xl bg-white p-6 shadow-lg shadow-indigo-100/60 ring-1 ring-gray-100 md:grid-cols-3 md:p-8 dark:bg-gray-800 dark:shadow-black/20 dark:ring-gray-700">
           {featuresData.map((feature) => {

@@ -18,14 +18,17 @@ export default function ChaptersGrid() {
       : chaptersData.filter((chapter) => chapter.unit === activeUnit);
 
   return (
-    <section className="py-16 px-4 md:px-8 max-w-7xl mx-auto w-full">
+    <section
+      id="chapters"
+      className="scroll-mt-20 py-16 px-4 md:px-8 max-w-7xl mx-auto w-full"
+    >
       <div className="text-center mb-10">
-        <h2 className="text-3xl font-bold text-gray-900 mb-4 dark:text-white">
+        <h2 className="heading-animated text-3xl font-bold text-gray-900 mb-4 dark:text-white">
           Select Your Chapter
         </h2>
-        <p className="text-gray-600 dark:text-gray-400">
+        {/* <p className="text-gray-600 dark:text-gray-400">
           Purchase individual chapters to focus exactly on what you need.
-        </p>
+        </p> */}
       </div>
 
       {/* أزرار الفلتر */}

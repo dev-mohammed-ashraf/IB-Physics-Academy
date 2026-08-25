@@ -7,8 +7,8 @@ export default function HeroSection({
   badgeText = "12+ Years Experience Teaching In English",
   titleLine1 = "Expert IB physics Tutor",
   highlightText = "Exam Preparation",
-  description = "This service has been developed independently from and is not endorsed by the International Baccalaureate Organization.",
-  imageUrl = "/header.jpg",
+  description = "Hi, I'm Maha, an experienced Physics tutor and academic researcher with over 12 years of teaching experience in English. I specialize in IB Physics and help students build a strong understanding of physics, solve problems step by step, and prepare strategically for their exams.",
+  imageUrl = "/hero.jpg",
   imageAlt = "Whiteboard with IB physics formulas and study materials",
 }: Partial<HeroProps>) {
   return (
@@ -24,7 +24,9 @@ export default function HeroSection({
 
             <h1 className="mt-6 text-4xl font-extrabold tracking-tight text-gray-900 sm:text-5xl xl:text-6xl dark:text-white">
               {titleLine1}{" "}
-              <div className="text-indigo-600 dark:text-indigo-400">{highlightText}</div>
+              <div className="text-indigo-600 dark:text-indigo-400">
+                {highlightText}
+              </div>
             </h1>
 
             <p className="mx-auto mt-6 max-w-xl text-base leading-relaxed text-gray-600 sm:text-lg lg:mx-0 dark:text-gray-400">
@@ -40,7 +42,7 @@ export default function HeroSection({
                 <ArrowRight className="size-4" />
               </Link>
               <Link
-                href="#free-sample"
+                href="#book-session"
                 className="inline-flex w-full items-center justify-center gap-2 rounded-xl border border-gray-300 bg-white px-7 py-3.5 text-sm font-semibold text-gray-800 transition-colors hover:border-indigo-300 hover:bg-indigo-50 sm:w-auto dark:border-gray-700 dark:bg-gray-800 dark:text-gray-200 dark:hover:border-indigo-700 dark:hover:bg-gray-700"
               >
                 <Download className="size-4 text-indigo-600 dark:text-indigo-400" />

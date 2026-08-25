@@ -1,5 +1,20 @@
 @import "tailwindcss";
 
+@layer components {
+  .heading-animated {
+    @apply mb-6 relative inline-block font-extrabold text-gray-900 dark:text-white transition-transform duration-300 hover:-translate-y-1 cursor-default;
+  }
+
+  .heading-animated::after {
+    content: '';
+    @apply absolute -bottom-5 left-1/2 -translate-x-1/2 h-1 w-1/4 rounded-full bg-indigo-600 dark:bg-indigo-400 transition-all duration-300 ease-in-out;
+  }
+
+  .heading-animated:hover::after {
+    @apply w-full;
+  }
+}
+
 @custom-variant dark (&:where(.dark, .dark *));
 
 :root {

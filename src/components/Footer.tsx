@@ -10,7 +10,7 @@ export default function Footer() {
         <p className="mt-3 text-sm text-gray-400">
           &copy; {year} IB Academy. All rights reserved.
         </p>
-        <p className="mx-auto mt-1.5 max-w-2xl text-xs leading-relaxed text-gray-500">
+        <p className="mx-auto mt-1.5 max-w-2xl text-sm leading-relaxed text-gray-500">
           This service has been developed independently from and is not endorsed
           by the International Baccalaureate Organization.
         </p>

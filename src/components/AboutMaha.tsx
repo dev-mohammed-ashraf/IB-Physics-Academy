@@ -1,4 +1,4 @@
-import { GraduationCap, BookOpenCheck, Target } from "lucide-react";
+import { GraduationCap, BookOpenCheck, Target, Atom } from "lucide-react";
 
 const highlights = [
   {
@@ -23,70 +23,111 @@ const highlights = [
 
 export default function AboutMaha() {
   return (
-    <section id="about" className="py-16 lg:py-24">
+    <section id="about-maha" className="scroll-mt-20 py-16 lg:py-8 bg-white dark:bg-gray-900">
       <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
-        <div className="rounded-3xl bg-gradient-to-br from-indigo-600 via-indigo-700 to-violet-800 p-6 text-white shadow-xl shadow-indigo-200/50 sm:p-10 lg:p-14 dark:shadow-black/20">
-          <div className="mx-auto max-w-3xl text-center">
-            <span className="inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-1.5 text-xs font-semibold text-indigo-100 ring-1 ring-white/20 sm:text-sm">
-              <GraduationCap className="size-4" />
-              Expert IB Physics Tutor | Exam Preparation
-            </span>
+        {/* الجزء العلوي (العنوان) يظل في المنتصف */}
+        <div className="flex flex-col items-center mx-auto max-w-3xl text-center">
+          <span className="inline-flex items-center gap-2 rounded-full bg-indigo-50 dark:bg-indigo-900/30 px-4 py-1.5 text-xs font-semibold text-indigo-700 dark:text-indigo-300 ring-1 ring-indigo-200 dark:ring-indigo-800">
+            <GraduationCap className="size-4" />
+            Expert IB Physics Tutor | Exam Preparation
+          </span>
 
-            <h2 className="mt-5 text-3xl font-extrabold tracking-tight sm:text-4xl">
-              About <span className="text-indigo-200">Maha</span>
-            </h2>
-          </div>
+          <h2 className="heading-animated mt-7 text-3xl font-extrabold tracking-tight text-gray-900 dark:text-white sm:text-4xl">
+            About{" "}
+            <span className="text-indigo-600 dark:text-indigo-400">Maha</span>
+          </h2>
+        </div>
 
-          <div className="mx-auto mt-8 max-w-3xl space-y-4 text-center">
-            <p className="text-sm leading-relaxed text-indigo-100 sm:text-base">
-              Hi, I&apos;m Maha, an experienced Physics tutor and academic
-              researcher with over 12 years of teaching experience in English.
-              I specialize in IB Physics and help students build a strong
-              understanding of physics, solve problems step by step, and
-              prepare strategically for their exams.
-            </p>
-            <p className="text-sm leading-relaxed text-indigo-100 sm:text-base">
-              My approach is simple: understand the concept, learn how to think
-              through the problem, practice effectively, and walk into the exam
-              with confidence. Whether you need help with a difficult chapter,
-              step-by-step problem solving, or focused exam preparation,
-              I&apos;m here to help you aim for your{" "}
-              <span className="font-bold text-white">7</span>.
-            </p>
-          </div>
+        {/* جزء النص: تم تعديله ليكون قائمة منسقة ومحاذاة لليسار */}
+        <div className="mx-auto mt-10 max-w-3xl text-left">
+          <ul className="space-y-4">
+            <li className="flex items-start gap-3">
+              <Atom
+                className="mt-1 size-5 shrink-0 text-indigo-500 dark:text-indigo-400"
+                aria-hidden="true"
+              />
+              <span className="text-sm leading-relaxed text-gray-600 dark:text-gray-400 sm:text-base">
+                Hi, I&apos;m Maha, an experienced Physics tutor and academic
+                researcher with over 12 years of teaching experience in English.
+              </span>
+            </li>
 
-          <div className="mt-10 grid grid-cols-1 gap-5 md:grid-cols-3">
-            {highlights.map((item) => {
-              const Icon = item.icon;
-              return (
-                <article
-                  key={item.id}
-                  className="rounded-2xl bg-white/10 p-6 ring-1 ring-white/15 backdrop-blur transition-colors hover:bg-white/15"
-                >
-                  <span className="flex size-11 items-center justify-center rounded-full bg-white/15 text-indigo-100">
-                    <Icon className="size-5" />
-                  </span>
-                  <h3 className="mt-4 text-base font-bold text-white">
-                    {item.title}
-                  </h3>
-                  <p className="mt-1.5 text-sm leading-relaxed text-indigo-100">
-                    {item.description}
-                  </p>
-                </article>
-              );
-            })}
-          </div>
+            <li className="flex items-start gap-3">
+              <Atom
+                className="mt-1 size-5 shrink-0 text-indigo-500 dark:text-indigo-400"
+                aria-hidden="true"
+              />
+              <span className="text-sm leading-relaxed text-gray-600 dark:text-gray-400 sm:text-base">
+                I specialize in IB Physics and help students build a strong
+                understanding of physics, solve problems step by step, and
+                prepare strategically for their exams.
+              </span>
+            </li>
 
-          <div className="mt-10 text-center">
-            <a
-              href="#book-session"
-              className="inline-flex items-center justify-center rounded-xl bg-white px-7 py-3.5 text-sm font-semibold text-indigo-700 shadow-lg transition-colors hover:bg-indigo-50"
-            >
-              Aim for Your 7 — Book a Free Session
-            </a>
-          </div>
+            <li className="flex items-start gap-3">
+              <Atom
+                className="mt-1 size-5 shrink-0 text-indigo-500 dark:text-indigo-400"
+                aria-hidden="true"
+              />
+              <span className="text-sm leading-relaxed text-gray-600 dark:text-gray-400 sm:text-base">
+                My approach is simple: understand the concept, learn how to
+                think through the problem, practice effectively, and walk into
+                the exam with confidence.
+              </span>
+            </li>
+
+            <li className="flex items-start gap-3">
+              <Atom
+                className="mt-1 size-5 shrink-0 text-indigo-500 dark:text-indigo-400"
+                aria-hidden="true"
+              />
+              <span className="text-sm leading-relaxed text-gray-600 dark:text-gray-400 sm:text-base">
+                Whether you need help with a difficult chapter, step-by-step
+                problem solving, or focused exam preparation, I&apos;m here to
+                help you aim for your{" "}
+                <strong className="font-bold text-gray-900 dark:text-white">
+                  7
+                </strong>
+                .
+              </span>
+            </li>
+          </ul>
+        </div>
+
+        {/* الكروت (Highlights) */}
+        <div className="mt-12 grid grid-cols-1 gap-6 md:grid-cols-3">
+          {highlights.map((item) => {
+            const Icon = item.icon;
+            return (
+              <article
+                key={item.id}
+                className="rounded-2xl bg-gray-50 dark:bg-gray-800/50 p-6 ring-1 ring-gray-100 dark:ring-gray-700 transition-shadow hover:shadow-md"
+              >
+                <span className="flex size-11 items-center justify-center rounded-full bg-white dark:bg-gray-800 text-indigo-600 dark:text-indigo-400 shadow-sm ring-1 ring-gray-100 dark:ring-gray-700">
+                  <Icon className="size-5" />
+                </span>
+                <h3 className="mt-4 text-base font-bold text-gray-900 dark:text-white">
+                  {item.title}
+                </h3>
+                <p className="mt-1.5 text-sm leading-relaxed text-gray-600 dark:text-gray-400">
+                  {item.description}
+                </p>
+              </article>
+            );
+          })}
+        </div>
+
+        {/* الزرار */}
+        <div className="mt-12 text-center">
+          <a
+            href="#book-session"
+            className="inline-flex items-center justify-center rounded-xl bg-indigo-600 px-7 py-3.5 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-indigo-700 dark:bg-indigo-500 dark:hover:bg-indigo-600"
+          >
+            Aim for Your 7 — Book a Free Session
+          </a>
         </div>
       </div>
     </section>
   );
 }
+
