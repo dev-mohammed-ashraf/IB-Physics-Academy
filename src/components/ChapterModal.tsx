@@ -1,8 +1,13 @@
 "use client";
 
+import { useState } from "react";
 import { X, CheckCircle2 } from "lucide-react";
+import {
+  PayPalScriptProvider,
+  PayPalButtons,
+  FUNDING,
+} from "@paypal/react-paypal-js";
 import type { Chapter } from "@/types";
-import Image from "next/image";
 
 interface ChapterModalProps {
   chapter: Chapter;
@@ -10,6 +15,10 @@ interface ChapterModalProps {
 }
 
 export default function ChapterModal({ chapter, onClose }: ChapterModalProps) {
+  const price = chapter.price.toString();
+  const [isSuccess, setIsSuccess] = useState(false);
+  const [isCapturing, setIsCapturing] = useState(false);
+
   return (
     <div
       className="fixed inset-0 z-[100] flex items-center justify-center bg-black/70 backdrop-blur-sm p-4"
@@ -67,21 +76,85 @@ export default function ChapterModal({ chapter, onClose }: ChapterModalProps) {
           ))}
         </ul>
 
-        {/* زر الدفع (واجهة فقط - سيتم ربط Stripe لاحقاً) */}
+        {/* زر الدفع عبر PayPal */}
         <div className="mt-6">
-          <button
-            type="button"
-            className="flex w-full cursor-pointer items-center justify-center gap-2 rounded-xl bg-[#FFC439] px-6 py-3.5 text-sm font-bold text-black transition-colors hover:bg-[#F2BA36]"
-          >
-            <Image
-              src="/paypal-logo.png"
-              alt="PayPal Logo"
-              width={17}
-              height={17}
-              className="object-contain"
-            />
-            Pay with PayPal
-          </button>
+          {isSuccess ? (
+            <div className="flex flex-col items-center gap-3 rounded-xl border border-green-500/30 bg-green-500/10 p-6 text-center">
+              <span className="flex size-12 items-center justify-center rounded-full bg-green-500/20">
+                <CheckCircle2 className="size-8 text-green-500" />
+              </span>
+              <div>
+                <p className="text-base font-bold text-white">
+                  Payment Successful!
+                </p>
+                <p className="mt-1 text-sm text-gray-300">
+                  You now have access to this chapter.
+                </p>
+              </div>
+              <button
+                type="button"
+                onClick={onClose}
+                className="mt-1 cursor-pointer touch-manipulation select-none rounded-lg bg-indigo-600 px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-indigo-700"
+              >
+                Start Learning
+              </button>
+            </div>
+          ) : (
+            <PayPalScriptProvider
+              options={{
+                clientId: process.env.NEXT_PUBLIC_PAYPAL_CLIENT_ID || "test",
+                currency: "USD",
+                "disable-funding": "card,credit",
+              }}
+            >
+              <PayPalButtons
+                fundingSource={FUNDING.PAYPAL}
+                style={{
+                  layout: "vertical",
+                  color: "gold",
+                  shape: "rect",
+                  label: "paypal",
+                }}
+                createOrder={async () => {
+                  try {
+                    const response = await fetch("/api/paypal/create-order", {
+                      method: "POST",
+                      headers: { "Content-Type": "application/json" },
+                      body: JSON.stringify({ price: price }),
+                    });
+                    if (!response.ok) {
+                      throw new Error("Failed to create order");
+                    }
+                    const data = await response.json();
+                    return data.id;
+                  } catch (error) {
+                    console.error("Create order failed:", error);
+                    throw error;
+                  }
+                }}
+                onApprove={async (data) => {
+                  if (isCapturing) return; // Prevent double trigger
+                  setIsCapturing(true);
+                  try {
+                    const response = await fetch("/api/paypal/capture-order", {
+                      method: "POST",
+                      headers: { "Content-Type": "application/json" },
+                      body: JSON.stringify({ orderID: data.orderID }),
+                    });
+                    if (!response.ok) {
+                      const errorData = await response.json();
+                      throw new Error(errorData.error || "Failed to capture");
+                    }
+                    setIsSuccess(true);
+                  } catch (error) {
+                    console.error("Capture Error:", error);
+                  } finally {
+                    setIsCapturing(false); // Release lock
+                  }
+                }}
+              />
+            </PayPalScriptProvider>
+          )}
         </div>
       </div>
     </div>

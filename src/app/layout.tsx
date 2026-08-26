@@ -15,7 +15,8 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "Get 7 With Maha",
-  description: "Expert IB physics Tutor | Exam Preparation",
+  description:
+    "Get 7 With Maha — Expert IB Physics tutoring with high-quality video lessons, past paper solutions, and Q&A support to help you reach a 7.",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
