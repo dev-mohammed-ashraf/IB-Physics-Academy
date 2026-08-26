@@ -5,19 +5,19 @@ const highlights = [
     id: 1,
     icon: GraduationCap,
     title: "12+ Years Experience",
-    description: "Experienced Physics tutor and academic researcher teaching in English.",
+    description: "Over a decade of teaching Physics in English across different levels.",
   },
   {
     id: 2,
     icon: BookOpenCheck,
     title: "Concept-First Approach",
-    description: "Understand the concept, think through the problem, then solve step by step.",
+    description: "We don't start with formulas. We start with understanding.",
   },
   {
     id: 3,
     icon: Target,
     title: "Strategic Exam Prep",
-    description: "Focused preparation so you walk into the exam with confidence.",
+    description: "Focused practice with IB-style questions, past papers, and mark schemes.",
   },
 ];
 
@@ -61,9 +61,7 @@ export default function AboutMaha() {
                 aria-hidden="true"
               />
               <span className="text-sm leading-relaxed text-gray-600 dark:text-gray-400 sm:text-base">
-                I specialize in IB Physics and help students build a strong
-                understanding of physics, solve problems step by step, and
-                prepare strategically for their exams.
+                My goal is simple: to make Physics understandable. Many students struggle because they were taught to memorize instead of understand.
               </span>
             </li>
 
@@ -73,9 +71,7 @@ export default function AboutMaha() {
                 aria-hidden="true"
               />
               <span className="text-sm leading-relaxed text-gray-600 dark:text-gray-400 sm:text-base">
-                My approach is simple: understand the concept, learn how to
-                think through the problem, practice effectively, and walk into
-                the exam with confidence.
+                We break complex ideas into simple parts, connect the math to the physics, and build a clear way of solving problems step by step.
               </span>
             </li>
 
@@ -85,13 +81,7 @@ export default function AboutMaha() {
                 aria-hidden="true"
               />
               <span className="text-sm leading-relaxed text-gray-600 dark:text-gray-400 sm:text-base">
-                Whether you need help with a difficult chapter, step-by-step
-                problem solving, or focused exam preparation, I&apos;m here to
-                help you aim for your{" "}
-                <strong className="font-bold text-gray-900 dark:text-white">
-                  7
-                </strong>
-                .
+                You don&apos;t need to be &quot;naturally good&quot; at Physics. You need the right method.
               </span>
             </li>
           </ul>

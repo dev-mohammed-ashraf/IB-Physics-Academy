@@ -10,7 +10,7 @@ const stepsData: HelpStep[] = [
     description: "Meet & Understand Step by Step",
     points: [
       "Book a free 20–30 minute introductory session.",
-      "Discuss your academic goals and target grades.",
+      "Discuss your academic goals, level, and struggles.",
       "Create a personalized roadmap for your success.",
     ],
     ctaLabel: "Book Now",
@@ -32,7 +32,7 @@ const stepsData: HelpStep[] = [
     points: [
       "Access carefully selected resources and past papers.",
       "Clear, detailed, step-by-step solutions to build strong understanding.",
-      "Practice at your own pace.",
+      "Practice at your own pace and prepare for your exam.",
     ],
     ctaLabel: "View Material",
     ctaHref: "#chapters",
@@ -56,7 +56,7 @@ export default function HowItWorks() {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-2xl text-center">
           <h2 className="heading-animated text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl dark:text-white">
-            How I Can Help You
+            HOW IT WORKS
           </h2>
           {/* <p className="mt-4 text-base leading-relaxed text-gray-600 sm:text-lg dark:text-gray-400">
             Choose the service that fits your needs and get closer to your

@@ -4,23 +4,23 @@ import type { WhyChooseItem } from "@/types";
 const whyChooseData: WhyChooseItem[] = [
   {
     id: 1,
-    title: "Continuous Support",
+    title: "Concept-First Learning",
     description:
-      "Get in touch anytime for questions, guidance, and personalized advice to help you achieve your goals.",
+      "Physics isn't about memorizing formulas. We focus on understanding the physics behind the equations so you know exactly how to approach any problem.",
     icon: UsersRound,
   },
   {
     id: 2,
-    title: "Notes & Resources",
+    title: "IB-Focused Preparation",
     description:
-      "Access high-quality notes, concise summaries, and past paper solutions curated to save your time and boost your performance.",
+      "Learn how to approach IB-style questions, interpret data, structure solutions, use mark schemes, and avoid common sources of lost marks.",
     icon: FileText,
   },
   {
     id: 3,
-    title: "Recorded Lessons",
+    title: "Learn at Your Own Pace",
     description:
-      "Missed a class? No worries. Access recorded lessons anytime to review and reinforce your learning.",
+      "Access recorded lessons, study notes, and step-by-step solutions whenever you need them — whether learning a topic for the first time or revising.",
     icon: Video,
   },
 ];

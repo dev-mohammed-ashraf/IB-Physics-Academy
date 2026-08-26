@@ -5,9 +5,9 @@ import type { HeroProps } from "@/types";
 
 export default function HeroSection({
   badgeText = "12+ Years Experience Teaching In English",
-  titleLine1 = "Expert IB physics Tutor",
-  highlightText = "Exam Preparation",
-  description = "Hi, I'm Maha, an experienced Physics tutor and academic researcher with over 12 years of teaching experience in English. I specialize in IB Physics and help students build a strong understanding of physics, solve problems step by step, and prepare strategically for their exams.",
+  titleLine1 = "Master IB Physics",
+  highlightText = "Aim for a 7.",
+  description = "Understand the concept. Solve step by step. Prepare with confidence. I help IB Physics students move beyond memorizing formulas and develop the deeper understanding needed to maximize exam performance.",
   imageUrl = "/hero.jpg",
   imageAlt = "Whiteboard with IB physics formulas and study materials",
 }: Partial<HeroProps>) {
@@ -38,7 +38,7 @@ export default function HeroSection({
                 href="#chapters"
                 className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-indigo-600 px-7 py-3.5 text-sm font-semibold text-white shadow-lg shadow-indigo-600/25 transition-colors hover:bg-indigo-700 sm:w-auto dark:hover:bg-indigo-500"
               >
-                Explore Chapters
+                EXPLORE IB PHYSICS
                 <ArrowRight className="size-4" />
               </Link>
               <Link
