@@ -99,13 +99,9 @@ export default function Testimonials() {
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-2xl text-center">
-          {/* 2. تعديل ألوان النصوص لتتناسب مع الخلفية الفاتحة الجديدة */}
           <h2 className="heading-animated text-3xl font-extrabold tracking-tight text-gray-900 dark:text-white sm:text-4xl">
             What Our IB Students Say
           </h2>
-          {/* <p className="mt-4 text-base leading-relaxed text-gray-600 dark:text-gray-400 sm:text-lg">
-            Real results from real students who trusted the process.
-          </p> */}
         </div>
 
         <div

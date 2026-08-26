@@ -4,7 +4,7 @@ export default function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="bg-gray-900 py-10">
+    <footer className="w-full bg-gray-900 py-10 dark:border-t dark:border-gray-800">
       <div className="mx-auto max-w-7xl px-4 text-center sm:px-6 lg:px-8 flex flex-col items-center gap-2.5">
         <Logo textDark={false} />
         <p className="mt-3 text-sm text-gray-400">
