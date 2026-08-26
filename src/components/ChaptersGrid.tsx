@@ -58,7 +58,7 @@ export default function ChaptersGrid() {
           <ChapterCard
             key={chapter.id}
             chapter={chapter}
-            onDetails={() => setSelectedChapter(chapter)}
+            onBuy={() => setSelectedChapter(chapter)}
           />
         ))}
       </div>
