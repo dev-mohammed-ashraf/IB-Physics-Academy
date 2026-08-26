@@ -152,7 +152,7 @@ export default function ChapterModal({ chapter, onClose }: ChapterModalProps) {
               WhatsApp Number
             </label>
             <div
-              className={`rounded-xl border border-gray-600 bg-gray-800 px-4 py-1 transition-all focus-within:border-indigo-400 focus-within:ring-1 focus-within:ring-indigo-400 ${
+              className={`flex items-center w-full rounded-xl border border-gray-600 bg-gray-800 px-4 transition-all focus-within:border-indigo-400 focus-within:ring-1 focus-within:ring-indigo-400 ${
                 formData.whatsapp && !isValidWhatsApp
                   ? "border-red-500/60"
                   : ""
@@ -165,8 +165,8 @@ export default function ChapterModal({ chapter, onClose }: ChapterModalProps) {
                 labels={customLabels}
                 value={formData.whatsapp}
                 onChange={(value) => handleInputChange("whatsapp", value ?? "")}
-                placeholder="+20 100 000 0000"
-                className="w-full bg-transparent text-sm text-white [&_input]:bg-transparent [&_input]:text-white [&_input:border-none]:border-none [&_input]:focus:outline-none [&_select]:bg-gray-800 [&_select]:text-white"
+                placeholder="Enter WhatsApp number"
+                className="h-[46px] w-full [&_.PhoneInputCountry]:gap-2 [&_input]:h-full [&_input]:flex-1 [&_input]:bg-transparent [&_input]:text-sm [&_input]:text-white [&_input]:placeholder-gray-500 [&_input]:outline-none [&_select]:bg-gray-800 [&_select]:text-white"
               />
             </div>
             {formData.whatsapp && !isValidWhatsApp && (
@@ -216,16 +216,18 @@ export default function ChapterModal({ chapter, onClose }: ChapterModalProps) {
                   Payment Successful!
                 </p>
                 <p className="mt-1 text-sm text-gray-300">
-                  You now have access to this chapter.
+                  Thank you for your purchase! We will contact you via email
+                  within 24 hours to grant you access to this chapter.
                 </p>
               </div>
-              <button
-                type="button"
-                onClick={onClose}
-                className="mt-1 cursor-pointer touch-manipulation select-none rounded-lg bg-indigo-600 px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-indigo-700"
+              <a
+                href="https://mail.google.com/mail/?view=cm&fs=1&to=maha.physics2020@gmail.com&su=Inquiry%20about%20Course%20Access"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-1 inline-flex cursor-pointer touch-manipulation select-none items-center justify-center rounded-lg bg-indigo-600 px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-indigo-700"
               >
-                Start Learning
-              </button>
+                Contact Support via Email
+              </a>
             </div>
           ) : !isFormValid ? (
             <button
