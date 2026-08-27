@@ -61,7 +61,9 @@ export default function AboutMaha() {
                 aria-hidden="true"
               />
               <span className="text-sm leading-relaxed text-gray-600 dark:text-gray-400 sm:text-base">
-                My goal is simple: to make Physics understandable. Many students struggle because they were taught to memorize instead of understand.
+                My goal is simple: to make Physics understandable. Many students
+                struggle because they were taught to memorize instead of
+                understand.
               </span>
             </li>
 
@@ -71,7 +73,9 @@ export default function AboutMaha() {
                 aria-hidden="true"
               />
               <span className="text-sm leading-relaxed text-gray-600 dark:text-gray-400 sm:text-base">
-                We break complex ideas into simple parts, connect the math to the physics, and build a clear way of solving problems step by step.
+                We break complex ideas into simple parts, connect the math to
+                the physics, and build a clear way of solving problems step by
+                step.
               </span>
             </li>
 
@@ -81,7 +85,8 @@ export default function AboutMaha() {
                 aria-hidden="true"
               />
               <span className="text-sm leading-relaxed text-gray-600 dark:text-gray-400 sm:text-base">
-                You don&apos;t need to be &quot;naturally good&quot; at Physics. You need the right method.
+                I&apos;ll show you that you don&apos;t need to be &apos;naturally good&apos; at
+                Physics, you just need the right method.
               </span>
             </li>
           </ul>

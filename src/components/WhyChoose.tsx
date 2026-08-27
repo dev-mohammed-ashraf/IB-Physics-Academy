@@ -41,8 +41,8 @@ export default function WhyChoose() {
               </span>
             </h2>
             <p className="mt-4 text-base leading-relaxed text-gray-600 sm:text-lg dark:text-gray-400">
-              A complete learning platform with the tools and support you need
-              to succeed.
+              Master the concepts, solve problems step by step, and prepare with
+              confidence.
             </p>
           </div>
 

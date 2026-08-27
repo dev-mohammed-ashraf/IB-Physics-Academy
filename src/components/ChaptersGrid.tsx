@@ -27,7 +27,7 @@ export default function ChaptersGrid() {
     >
       <div className="text-center mb-10">
         <h2 className="heading-animated text-3xl font-bold text-gray-900 mb-4 dark:text-white">
-          LEARN IB PHYSICS — ONE CHAPTER AT A TIME
+          Master IB Physics Chapter by Chapter
         </h2>
         {/* <p className="text-gray-600 dark:text-gray-400">
           Purchase individual chapters to focus exactly on what you need.
