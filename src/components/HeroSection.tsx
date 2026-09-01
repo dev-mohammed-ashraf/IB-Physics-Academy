@@ -8,8 +8,8 @@ export default function HeroSection({
   titleLine1 = "Master IB Physics",
   highlightText = "Aim for a 7.",
   description = "Understand the concept. Solve step by step. Prepare with confidence. I help IB Physics students move beyond memorizing formulas and develop the deeper understanding needed to maximize exam performance.",
-  imageUrl = "/hero.jpg",
-  imageAlt = "Whiteboard with IB physics formulas and study materials",
+  imageUrl = "/header.jpg",
+  imageAlt = "IB Physics Tutoring",
 }: Partial<HeroProps>) {
   return (
     <section className="bg-gradient-to-b from-indigo-50/60 from-0% via-indigo-50/30 via-70% to-white to-100% dark:from-indigo-950/40 dark:via-gray-900 dark:to-gray-900">
@@ -46,7 +46,7 @@ export default function HeroSection({
                 className="inline-flex w-full items-center justify-center gap-2 rounded-xl border border-gray-300 bg-white px-7 py-3.5 text-sm font-semibold text-gray-800 transition-colors hover:border-indigo-300 hover:bg-indigo-50 sm:w-auto dark:border-gray-700 dark:bg-gray-800 dark:text-gray-200 dark:hover:border-indigo-700 dark:hover:bg-gray-700"
               >
                 <Download className="size-4 text-indigo-600 dark:text-indigo-400" />
-                Download Free Sample
+                Book A Free Session
               </Link>
             </div>
           </div>

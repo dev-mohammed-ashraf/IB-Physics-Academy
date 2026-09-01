@@ -1,12 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { X, CheckCircle2 } from "lucide-react";
-import {
-  PayPalScriptProvider,
-  PayPalButtons,
-  FUNDING,
-} from "@paypal/react-paypal-js";
+import { X, LoaderCircle } from "lucide-react";
 import PhoneInput, {
   isValidPhoneNumber,
   getCountries,
@@ -15,7 +10,7 @@ import PhoneInput, {
 import "react-phone-number-input/style.css";
 import en from "react-phone-number-input/locale/en.json";
 import type { Country } from "react-phone-number-input";
-import type { Chapter } from "@/types";
+import type { Chapter, ModalIntent } from "@/types";
 
 const customLabels: Record<Country, string> = { ...en };
 getCountries().forEach((country) => {
@@ -28,16 +23,49 @@ const globalCountries = getCountries()
 
 interface ChapterModalProps {
   chapter: Chapter;
+  intent: ModalIntent;
   onClose: () => void;
 }
+
+// نصوص النافذة المشتركة حسب النية (تسجيل في الكورس / طلب العينة المجانية)
+const intentConfig: Record<
+  ModalIntent,
+  {
+    modalTitle: string;
+    description: string;
+    accessLabel: string;
+    submitLabel: string;
+    disabledLabel: string;
+  }
+> = {
+  enroll: {
+    modalTitle: "Get Course Access",
+    description:
+      "Fill in your details and we'll contact you within 24 hours to grant you access to this chapter.",
+    accessLabel: "Free Access",
+    submitLabel: "Request Access Now",
+    disabledLabel: "Please fill all fields to enroll",
+  },
+  sample: {
+    modalTitle: "Request Free Sample",
+    description:
+      "Fill in your details and we'll send the free sample for this chapter straight to your inbox.",
+    accessLabel: "Free Sample",
+    submitLabel: "Get Free Sample",
+    disabledLabel: "Please fill all fields to request the sample",
+  },
+};
 
 const inputClasses =
   "w-full rounded-xl border border-gray-600 bg-gray-800 px-4 py-3 text-sm text-white outline-none transition-all placeholder-gray-500 focus:border-indigo-400 focus:ring-1 focus:ring-indigo-400";
 
-export default function ChapterModal({ chapter, onClose }: ChapterModalProps) {
-  const price = chapter.price.toString();
-  const [isSuccess, setIsSuccess] = useState(false);
-  const [isCapturing, setIsCapturing] = useState(false);
+export default function ChapterModal({
+  chapter,
+  intent,
+  onClose,
+}: ChapterModalProps) {
+  const config = intentConfig[intent];
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -58,6 +86,36 @@ export default function ChapterModal({ chapter, onClose }: ChapterModalProps) {
 
   const handleInputChange = (field: keyof typeof formData, value: string) => {
     setFormData((prev) => ({ ...prev, [field]: value }));
+  };
+
+  const handleSubmit = async () => {
+    if (!isFormValid || isSubmitting) return;
+
+    setIsSubmitting(true);
+    try {
+      const response = await fetch("/api/enroll", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          intent,
+          buyerData: formData,
+          unitName: chapter.unit,
+          chapterName: chapter.title,
+        }),
+      });
+      if (!response.ok) {
+        throw new Error("Failed to submit request");
+      }
+      // Reset silently and close the modal immediately — no toast/popup shown
+      setFormData({ name: "", email: "", whatsapp: "", country: "" });
+      setIsSubmitting(false);
+      onClose();
+    } catch (error) {
+      console.error("Request failed:", error);
+      setIsSubmitting(false);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -95,16 +153,22 @@ export default function ChapterModal({ chapter, onClose }: ChapterModalProps) {
           id="chapter-modal-title"
           className="mt-1.5 pr-10 text-xl font-bold text-white sm:text-2xl"
         >
-          {chapter.title}
+          {config.modalTitle}
         </h3>
+        <p className="mt-0.5 text-sm text-gray-400">{chapter.title}</p>
 
         {/* السعر */}
         <p className="mt-2">
-          <span className="text-xl font-bold text-white">${chapter.price}</span>
-          <span className="ml-2 text-sm text-gray-400">one-time purchase</span>
+          <span className="text-xl font-bold text-white">Free</span>
+          <span className="ml-2 text-sm text-gray-400">
+            {config.accessLabel}
+          </span>
+        </p>
+        <p className="mt-1.5 text-xs leading-relaxed text-gray-400">
+          {config.description}
         </p>
 
-        {/* نموذج ما قبل الدفع */}
+        {/* نموذج بيانات الطالب */}
         <form className="mt-6 space-y-4 border-t border-gray-800 pt-5">
           <div>
             <label
@@ -204,99 +268,32 @@ export default function ChapterModal({ chapter, onClose }: ChapterModalProps) {
           </div>
         </form>
 
-        {/* زر الدفع عبر PayPal */}
+        {/* زر الإرسال المشترك */}
         <div className="mt-5">
-          {isSuccess ? (
-            <div className="flex flex-col items-center gap-3 rounded-xl border border-green-500/30 bg-green-500/10 p-6 text-center">
-              <span className="flex size-12 items-center justify-center rounded-full bg-green-500/20">
-                <CheckCircle2 className="size-8 text-green-500" />
-              </span>
-              <div>
-                <p className="text-base font-bold text-white">
-                  Payment Successful!
-                </p>
-                <p className="mt-1 text-sm text-gray-300">
-                  Thank you for your purchase! We will contact you via email
-                  within 24 hours to grant you access to this chapter.
-                </p>
-              </div>
-              <a
-                href="https://mail.google.com/mail/?view=cm&fs=1&to=maha.physics2020@gmail.com&su=Inquiry%20about%20Course%20Access"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="mt-1 inline-flex cursor-pointer touch-manipulation select-none items-center justify-center rounded-lg bg-indigo-600 px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-indigo-700"
-              >
-                Contact Support via Email
-              </a>
-            </div>
-          ) : !isFormValid ? (
+          {!isFormValid ? (
             <button
               type="button"
               disabled
               className="flex w-full cursor-not-allowed items-center justify-center gap-2 rounded-xl bg-gray-700 px-6 py-3.5 text-sm font-semibold text-gray-400"
             >
-              Please fill all fields to proceed with payment
+              {config.disabledLabel}
             </button>
           ) : (
-            <PayPalScriptProvider
-              options={{
-                clientId: process.env.NEXT_PUBLIC_PAYPAL_CLIENT_ID || "test",
-                currency: "USD",
-                "disable-funding": "card,credit",
-              }}
+            <button
+              type="button"
+              onClick={handleSubmit}
+              disabled={isSubmitting}
+              className="flex w-full cursor-pointer touch-manipulation select-none items-center justify-center gap-2 rounded-xl bg-indigo-600 px-6 py-3.5 text-sm font-semibold text-white transition-colors hover:bg-indigo-700 disabled:cursor-not-allowed disabled:bg-indigo-600/60"
             >
-              <PayPalButtons
-                fundingSource={FUNDING.PAYPAL}
-                style={{
-                  layout: "vertical",
-                  color: "gold",
-                  shape: "rect",
-                  label: "paypal",
-                }}
-                createOrder={async () => {
-                  try {
-                    const response = await fetch("/api/paypal/create-order", {
-                      method: "POST",
-                      headers: { "Content-Type": "application/json" },
-                      body: JSON.stringify({ price: price }),
-                    });
-                    if (!response.ok) {
-                      throw new Error("Failed to create order");
-                    }
-                    const data = await response.json();
-                    return data.id;
-                  } catch (error) {
-                    console.error("Create order failed:", error);
-                    throw error;
-                  }
-                }}
-                onApprove={async (data) => {
-                  if (isCapturing) return; // Prevent double trigger
-                  setIsCapturing(true);
-                  try {
-                    const response = await fetch("/api/paypal/capture-order", {
-                      method: "POST",
-                      headers: { "Content-Type": "application/json" },
-                      body: JSON.stringify({
-                        orderID: data.orderID,
-                        buyerData: formData,
-                        unitName: chapter.unit,
-                        chapterName: chapter.title,
-                      }),
-                    });
-                    if (!response.ok) {
-                      const errorData = await response.json();
-                      throw new Error(errorData.error || "Failed to capture");
-                    }
-                    setIsSuccess(true);
-                  } catch (error) {
-                    console.error("Capture Error:", error);
-                  } finally {
-                    setIsCapturing(false); // Release lock
-                  }
-                }}
-              />
-            </PayPalScriptProvider>
+              {isSubmitting ? (
+                <>
+                  <LoaderCircle className="size-5 animate-spin" />
+                  Sending...
+                </>
+              ) : (
+                config.submitLabel
+              )}
+            </button>
           )}
         </div>
       </div>

@@ -4,7 +4,7 @@ import { useState } from "react";
 import { chaptersData } from "@/data/chaptersData";
 import ChapterCard from "./ChapterCard";
 import ChapterModal from "./ChapterModal";
-import type { Chapter } from "@/types";
+import type { Chapter, ModalIntent } from "@/types";
 
 // أسماء الـ Units اللي هتظهر في الأزرار
 const unitsList = ["Unit A", "Unit B", "Unit C", "Unit D", "Unit E", "All"];
@@ -13,6 +13,13 @@ export default function ChaptersGrid() {
   // الحالة الافتراضية هي عرض "الكل"
   const [activeUnit, setActiveUnit] = useState(unitsList[0]);
   const [selectedChapter, setSelectedChapter] = useState<Chapter | null>(null);
+  // نية فتح النافذة: تسجيل في الكورس أو طلب العينة المجانية
+  const [modalIntent, setModalIntent] = useState<ModalIntent | null>(null);
+
+  const closeModal = () => {
+    setSelectedChapter(null);
+    setModalIntent(null);
+  };
 
   // تصفية الكورسات بناءً على الزرار اللي تم اختياره
   const filteredChapters =
@@ -30,7 +37,7 @@ export default function ChaptersGrid() {
           Master IB Physics Chapter by Chapter
         </h2>
         {/* <p className="text-gray-600 dark:text-gray-400">
-          Purchase individual chapters to focus exactly on what you need.
+          All chapters are completely free — enroll and start learning today.
         </p> */}
       </div>
 
@@ -58,7 +65,14 @@ export default function ChaptersGrid() {
           <ChapterCard
             key={chapter.id}
             chapter={chapter}
-            onBuy={() => setSelectedChapter(chapter)}
+            onEnroll={() => {
+              setSelectedChapter(chapter);
+              setModalIntent("enroll");
+            }}
+            onRequestSample={() => {
+              setSelectedChapter(chapter);
+              setModalIntent("sample");
+            }}
           />
         ))}
       </div>
@@ -70,11 +84,12 @@ export default function ChaptersGrid() {
         </div>
       )}
 
-      {/* نافذة التفاصيل */}
-      {selectedChapter && (
+      {/* نافذة التفاصيل (مشتركة بين التسجيل وطلب العينة) */}
+      {selectedChapter && modalIntent && (
         <ChapterModal
           chapter={selectedChapter}
-          onClose={() => setSelectedChapter(null)}
+          intent={modalIntent}
+          onClose={closeModal}
         />
       )}
     </section>

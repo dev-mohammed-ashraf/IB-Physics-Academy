@@ -1,14 +1,19 @@
 "use client";
 
-import { CheckCircle2 } from "lucide-react";
+import { CheckCircle2, Download } from "lucide-react";
 import type { Chapter } from "@/types";
 
 interface ChapterCardProps {
   chapter: Chapter;
-  onBuy: () => void;
+  onEnroll: () => void;
+  onRequestSample: () => void;
 }
 
-export default function ChapterCard({ chapter, onBuy }: ChapterCardProps) {
+export default function ChapterCard({
+  chapter,
+  onEnroll,
+  onRequestSample,
+}: ChapterCardProps) {
   return (
     <article className="flex h-full flex-col justify-between rounded-xl border border-gray-200 bg-white p-5 shadow-sm transition-all hover:-translate-y-1 hover:border-indigo-300 hover:shadow-md dark:border-gray-700 dark:bg-gray-800 dark:hover:border-indigo-600">
       <div>
@@ -44,20 +49,31 @@ export default function ChapterCard({ chapter, onBuy }: ChapterCardProps) {
         {/* السعر */}
         <p className="mt-4 flex items-baseline gap-1.5">
           <span className="text-xl font-extrabold text-gray-900 dark:text-white">
-            ${chapter.price}
+            Free
           </span>
           <span className="text-xs text-gray-500 dark:text-gray-400">
-            one-time purchase
+            Free Access
           </span>
         </p>
 
-        <button
-          type="button"
-          onClick={onBuy}
-          className="mt-3 w-full cursor-pointer touch-manipulation select-none rounded-lg bg-indigo-600 px-4 py-2.5 text-xs font-semibold text-white transition-colors hover:bg-indigo-700 sm:text-sm dark:bg-indigo-600 dark:hover:bg-indigo-500"
-        >
-          Buy Now
-        </button>
+        {/* الأزرار */}
+        <div className="mt-3 flex flex-col gap-2">
+          <button
+            type="button"
+            onClick={onEnroll}
+            className="w-full cursor-pointer touch-manipulation select-none rounded-lg bg-indigo-600 px-4 py-2.5 text-xs font-semibold text-white transition-colors hover:bg-indigo-700 sm:text-sm dark:bg-indigo-600 dark:hover:bg-indigo-500"
+          >
+            Enroll for Free
+          </button>
+          <button
+            type="button"
+            onClick={onRequestSample}
+            className="inline-flex w-full cursor-pointer touch-manipulation select-none items-center justify-center gap-2 rounded-lg border border-indigo-300 bg-transparent px-4 py-2.5 text-xs font-semibold text-indigo-600 transition-colors hover:border-indigo-600 hover:bg-indigo-50 sm:text-sm dark:border-indigo-700 dark:text-indigo-400 dark:hover:border-indigo-400 dark:hover:bg-indigo-950/40"
+          >
+            <Download className="size-4" />
+            Download Free Sample
+          </button>
+        </div>
       </div>
     </article>
   );

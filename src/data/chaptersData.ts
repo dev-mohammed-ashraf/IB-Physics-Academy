@@ -5,7 +5,6 @@ export const chaptersData: Chapter[] = [
     id: 1,
     number: 1,
     title: "Kinematics",
-    price: 7,
     subtopics: [
       "Displacement, distance, speed and velocity",
       "Uniformly accelerated motion: the equations of kinematics",
@@ -18,7 +17,6 @@ export const chaptersData: Chapter[] = [
     id: 2,
     number: 2,
     title: "Forces and Newton's laws",
-    price: 7,
     subtopics: [
       "Forces and their direction",
       "Newton's laws of motion",
@@ -30,7 +28,6 @@ export const chaptersData: Chapter[] = [
     id: 3,
     number: 3,
     title: "Work, energy and power",
-    price: 7,
     subtopics: [
       "Work",
       "Conservation of energy",
@@ -43,7 +40,6 @@ export const chaptersData: Chapter[] = [
     id: 4,
     number: 4,
     title: "Linear momentum",
-    price: 7,
     subtopics: [
       "Newton's second law in terms of momentum",
       "Impulse and force-time graphs",
@@ -57,7 +53,6 @@ export const chaptersData: Chapter[] = [
     id: 5,
     number: 5,
     title: "Rigid body mechanics",
-    price: 7,
     subtopics: [
       "Kinematics of rotational motion",
       "Rotational equilibrium and Newton's second law",
@@ -69,7 +64,6 @@ export const chaptersData: Chapter[] = [
     id: 6,
     number: 6,
     title: "Relativity",
-    price: 7,
     subtopics: [
       "Reference frames and Lorentz transformations",
       "Effects of relativity",
@@ -81,7 +75,6 @@ export const chaptersData: Chapter[] = [
     id: 7,
     number: 7,
     title: "Thermal energy transfers",
-    price: 7,
     subtopics: [
       "Particles, temperature and energy",
       "Specific heat capacity and change of phase",
@@ -93,7 +86,6 @@ export const chaptersData: Chapter[] = [
     id: 8,
     number: 8,
     title: "The greenhouse effect",
-    price: 7,
     subtopics: ["Radiation from real bodies", "Energy balance of the earth"],
     unit: "Unit B",
   },
@@ -101,7 +93,6 @@ export const chaptersData: Chapter[] = [
     id: 9,
     number: 9,
     title: "The gas laws",
-    price: 7,
     subtopics: [
       "Moles, molar mass and the Avogadro constant",
       "Ideal gases",
@@ -113,7 +104,6 @@ export const chaptersData: Chapter[] = [
     id: 10,
     number: 10,
     title: "Therodynamics",
-    price: 7,
     subtopics: [
       "Internal energy",
       "The first law of thermodynamics",
@@ -126,7 +116,6 @@ export const chaptersData: Chapter[] = [
     id: 11,
     number: 11,
     title: "Current and circuits",
-    price: 7,
     subtopics: [
       "Potential difference, current and resistance",
       "Voltage, power and emf",
@@ -139,7 +128,6 @@ export const chaptersData: Chapter[] = [
     id: 12,
     number: 12,
     title: "Simple harmonic motion",
-    price: 7,
     subtopics: [
       "Simple harmonic oscillations",
       "Details of simple harmonic motion",
@@ -152,7 +140,6 @@ export const chaptersData: Chapter[] = [
     id: 13,
     number: 13,
     title: "The wave model",
-    price: 7,
     subtopics: [
       "Mechanical pulses and waves",
       "Transverse and longitudinal waves",
@@ -165,7 +152,6 @@ export const chaptersData: Chapter[] = [
     id: 14,
     number: 14,
     title: "Wave phenomena",
-    price: 7,
     subtopics: [
       "Reflection and refraction",
       "The principle of superposition",
@@ -179,7 +165,6 @@ export const chaptersData: Chapter[] = [
     id: 15,
     number: 15,
     title: "Standing waves and resonance",
-    price: 7,
     subtopics: [
       "Standing waves",
       "Standing waves on strings",
@@ -192,7 +177,6 @@ export const chaptersData: Chapter[] = [
     id: 16,
     number: 16,
     title: "The Doppler effect",
-    price: 7,
     subtopics: [
       "The Doppler effect at low speeds",
       "The Doppler effect for sound",
@@ -203,7 +187,6 @@ export const chaptersData: Chapter[] = [
     id: 17,
     number: 17,
     title: "Gravitation",
-    price: 7,
     subtopics: [
       "Newton's law of gravitation",
       "Gravitational potential and energy",
@@ -215,7 +198,6 @@ export const chaptersData: Chapter[] = [
     id: 18,
     number: 18,
     title: "Electric and magnetic fields",
-    price: 7,
     subtopics: [
       "Electric charge, force and field",
       "Magnetic field and force",
@@ -227,7 +209,6 @@ export const chaptersData: Chapter[] = [
     id: 19,
     number: 19,
     title: "Motion in electric and magnetic fields",
-    price: 7,
     subtopics: ["Motion in an electric field", "Motion in a magnetic field"],
     unit: "Unit D",
   },
@@ -235,7 +216,6 @@ export const chaptersData: Chapter[] = [
     id: 20,
     number: 20,
     title: "Electromagnetic induction",
-    price: 7,
     subtopics: [
       "Electromagnetic induction",
       "Generators and alternating current",
@@ -246,7 +226,6 @@ export const chaptersData: Chapter[] = [
     id: 21,
     number: 21,
     title: "Atomic physics",
-    price: 7,
     subtopics: [
       "The structure of the atom",
       "Quantisation of angular momentum",
@@ -257,7 +236,6 @@ export const chaptersData: Chapter[] = [
     id: 22,
     number: 22,
     title: "Quantum physics",
-    price: 7,
     subtopics: ["Photons and the photoelectric effect", "Matter waves"],
     unit: "Unit E",
   },
@@ -265,7 +243,6 @@ export const chaptersData: Chapter[] = [
     id: 23,
     number: 23,
     title: "Nuclear physics",
-    price: 7,
     subtopics: [
       "Mass defect and binding energy",
       "Radioactivity",
@@ -277,7 +254,6 @@ export const chaptersData: Chapter[] = [
     id: 24,
     number: 24,
     title: "Nuclear fission",
-    price: 7,
     subtopics: ["Nuclear fission"],
     unit: "Unit E",
   },
@@ -285,7 +261,6 @@ export const chaptersData: Chapter[] = [
     id: 25,
     number: 25,
     title: "Nuclear fusion and stars",
-    price: 7,
     subtopics: [
       "Nuclear fusion",
       "Stellar properties and the Hertzsprung-Russell diagram",

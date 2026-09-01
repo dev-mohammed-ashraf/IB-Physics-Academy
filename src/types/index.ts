@@ -4,7 +4,6 @@ export interface Chapter {
   id: number;
   number: number;
   title: string;
-  price: number;
   subtopics: string[];
   unit: string;
   isHL?: boolean;
@@ -65,10 +64,4 @@ export interface Testimonial {
   rating: number;
 }
 
-export interface PricingPlan {
-  id: number;
-  name: string;
-  subtitle?: string;
-  price: number;
-  isBestValue?: boolean;
-}
+export type ModalIntent = "enroll" | "sample";

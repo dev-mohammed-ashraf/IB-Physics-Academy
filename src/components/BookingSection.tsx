@@ -5,18 +5,6 @@ import type { FormEvent } from "react";
 import { Lock, LoaderCircle } from "lucide-react";
 import { getCountries } from "react-phone-number-input";
 import en from "react-phone-number-input/locale/en.json";
-import type { PricingPlan } from "@/types";
-
-const plansData: PricingPlan[] = [
-  {
-    id: 1,
-    name: "Complete Package",
-    subtitle: "(Best Value)",
-    price: 499,
-    isBestValue: true,
-  },
-  { id: 2, name: "Single Session", price: 249 },
-];
 
 const platforms = ["Zoom", "Google Meet"];
 
@@ -30,9 +18,6 @@ interface TimezoneOption {
 }
 
 export default function BookingSection() {
-  const [selectedPlanId, setSelectedPlanId] = useState<number>(
-    plansData[0].id
-  );
   const [timezones, setTimezones] = useState<TimezoneOption[]>([]);
   const [formData, setFormData] = useState({
     name: "",
