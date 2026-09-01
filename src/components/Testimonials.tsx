@@ -94,12 +94,11 @@ export default function Testimonials() {
   return (
     <section
       id="students-say"
-      // 1. تبسيط الخلفية مع الحفاظ على وضع الـ Dark Mode
-      className="scroll-mt-16 py-16 lg:pt-24 lg:pb-30 bg-gray-50 dark:bg-gray-900"
+      className="scroll-mt-16 py-16 lg:pt-24 lg:pb-30 bg-sunken"
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-2xl text-center">
-          <h2 className="heading-animated text-3xl font-extrabold tracking-tight text-gray-900 dark:text-white sm:text-4xl">
+          <h2 className="heading-animated text-3xl font-extrabold tracking-tight text-heading sm:text-4xl">
             WHAT OUR IB STUDENTS SAY
           </h2>
         </div>
@@ -113,7 +112,7 @@ export default function Testimonials() {
             type="button"
             onClick={goToPrevious}
             aria-label="Previous testimonial"
-            className="absolute left-0 top-1/2 z-20 flex size-11 -translate-y-1/2 items-center justify-center rounded-full bg-white text-gray-700 shadow-lg shadow-indigo-900/10 transition-all hover:bg-indigo-600 hover:text-white hover:scale-110 focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 dark:bg-gray-800 dark:text-gray-200 dark:hover:bg-indigo-500 dark:hover:text-white"
+            className="absolute left-0 top-1/2 z-20 flex size-11 -translate-y-1/2 items-center justify-center rounded-full bg-card text-arrow shadow-lg shadow-glow-card transition-all hover:bg-primary-hover hover:text-white hover:scale-110 focus:outline-none focus-visible:ring-2 focus-visible:ring-focus-ring"
           >
             <ChevronLeft className="size-6" />
           </button>
@@ -121,7 +120,7 @@ export default function Testimonials() {
             type="button"
             onClick={goToNext}
             aria-label="Next testimonial"
-            className="absolute right-0 top-1/2 z-20 flex size-11 -translate-y-1/2 items-center justify-center rounded-full bg-white text-gray-700 shadow-lg shadow-indigo-900/10 transition-all hover:bg-indigo-600 hover:text-white hover:scale-110 focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 dark:bg-gray-800 dark:text-gray-200 dark:hover:bg-indigo-500 dark:hover:text-white"
+            className="absolute right-0 top-1/2 z-20 flex size-11 -translate-y-1/2 items-center justify-center rounded-full bg-card text-arrow shadow-lg shadow-glow-card transition-all hover:bg-primary-hover hover:text-white hover:scale-110 focus:outline-none focus-visible:ring-2 focus-visible:ring-focus-ring"
           >
             <ChevronRight className="size-6" />
           </button>
@@ -141,25 +140,20 @@ export default function Testimonials() {
                   }`}
                 >
                   <article
-                    // 3. إضافة relative و overflow-hidden للكارت عشان الأيقونات متخرجش براه
-                    className="relative flex h-full w-full flex-col justify-between overflow-hidden rounded-3xl bg-white/95 dark:bg-gray-800/95 backdrop-blur-sm p-6 shadow-xl shadow-indigo-900/10 dark:shadow-none border border-gray-100 dark:border-gray-700 transition-transform hover:-translate-y-1"
+                    className="relative flex h-full w-full flex-col justify-between overflow-hidden rounded-3xl bg-glass backdrop-blur-sm p-6 shadow-xl shadow-glow-card border border-line-hairline transition-transform hover:-translate-y-1"
                   >
-                    {/* العلامة الأولى: أعلى اليمين (مقلوبة) */}
                     <Quote
-                      className="absolute right-4 top-4 size-20 -rotate-180 text-indigo-50 dark:text-gray-700/30"
+                      className="absolute right-4 top-4 size-20 -rotate-180 text-quote"
+                      aria-hidden="true"
+                    />
+                    <Quote
+                      className="absolute bottom-4 left-4 size-20 text-quote"
                       aria-hidden="true"
                     />
 
-                    {/* العلامة الثانية: أسفل اليسار */}
-                    <Quote
-                      className="absolute bottom-4 left-4 size-20 text-indigo-50 dark:text-gray-700/30"
-                      aria-hidden="true"
-                    />
-
-                    {/* تغليف المحتوى بـ relative z-10 عشان النص يظهر فوق الأيقونات */}
                     <div className="relative z-10">
                       <TestimonialStars rating={testimonial.rating} />
-                      <p className="mt-5 line-clamp-5 text-base leading-relaxed text-gray-800 font-medium dark:text-gray-200">
+                      <p className="mt-5 line-clamp-5 text-base leading-relaxed text-emphasis font-medium">
                         &ldquo;{testimonial.quote}&rdquo;
                       </p>
                     </div>
@@ -170,9 +164,9 @@ export default function Testimonials() {
                         alt={`${testimonial.author} avatar`}
                         width={48}
                         height={48}
-                        className="size-10 rounded-full object-cover ring-2 ring-indigo-100 dark:ring-gray-700"
+                        className="size-10 rounded-full object-cover ring-2 ring-avatar-ring"
                       />
-                      <span className="text-sm font-bold text-gray-900 dark:text-white">
+                      <span className="text-sm font-bold text-heading">
                         {testimonial.author}
                       </span>
                     </div>

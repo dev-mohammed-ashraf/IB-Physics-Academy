@@ -25,7 +25,7 @@ export default function FloatingButtons() {
         rel="noopener noreferrer"
         aria-label="Contact Support"
         title="Contact Support"
-        className="fixed bottom-6 left-6 z-50 flex cursor-pointer touch-manipulation select-none items-center justify-center rounded-full border border-gray-200 bg-white p-3 shadow-lg transition-transform duration-300 hover:scale-110 dark:border-gray-300 dark:bg-gray-100 dark:shadow-black/40"
+        className="fixed bottom-6 left-6 z-50 flex cursor-pointer touch-manipulation select-none items-center justify-center rounded-full border border-line-float bg-inverted p-3 shadow-lg transition-transform duration-300 hover:scale-110 dark:shadow-black/40"
       >
         <Image
           src="https://upload.wikimedia.org/wikipedia/commons/7/7e/Gmail_icon_%282020%29.svg"
@@ -42,7 +42,7 @@ export default function FloatingButtons() {
         onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
         aria-label="Scroll back to top"
         title="Back to top"
-        className={`fixed bottom-20 right-6 z-50 flex size-12 cursor-pointer touch-manipulation select-none items-center justify-center rounded-full bg-indigo-600 text-white shadow-lg shadow-indigo-900/30 transition-all duration-300 hover:scale-110 hover:bg-indigo-700 dark:shadow-black/40 ${
+        className={`fixed bottom-20 right-6 z-50 flex size-12 cursor-pointer touch-manipulation select-none items-center justify-center rounded-full bg-primary text-white shadow-lg shadow-glow-float transition-all duration-300 hover:scale-110 hover:bg-primary-hover dark:shadow-black/40 ${
           showScrollTop
             ? "pointer-events-auto translate-y-0 opacity-100"
             : "pointer-events-none translate-y-4 opacity-0"

@@ -27,7 +27,6 @@ interface ChapterModalProps {
   onClose: () => void;
 }
 
-// نصوص النافذة المشتركة حسب النية (تسجيل في الكورس / طلب العينة المجانية)
 const intentConfig: Record<
   ModalIntent,
   {
@@ -57,7 +56,7 @@ const intentConfig: Record<
 };
 
 const inputClasses =
-  "w-full rounded-xl border border-gray-600 bg-gray-800 px-4 py-3 text-sm text-white outline-none transition-all placeholder-gray-500 focus:border-indigo-400 focus:ring-1 focus:ring-indigo-400";
+  "w-full rounded-xl border border-line-strong bg-field px-4 py-3 text-sm text-white outline-none transition-all placeholder-faint-static focus:border-primary-subtle focus:ring-1 focus:ring-primary-subtle";
 
 export default function ChapterModal({
   chapter,
@@ -106,7 +105,6 @@ export default function ChapterModal({
       if (!response.ok) {
         throw new Error("Failed to submit request");
       }
-      // Reset silently and close the modal immediately — no toast/popup shown
       setFormData({ name: "", email: "", whatsapp: "", country: "" });
       setIsSubmitting(false);
       onClose();
@@ -127,24 +125,22 @@ export default function ChapterModal({
       aria-labelledby="chapter-modal-title"
     >
       <div
-        className="relative max-h-[90vh] w-full max-w-lg overflow-y-auto bg-gray-900 border border-gray-800 rounded-2xl p-6 shadow-2xl"
+        className="relative max-h-[90vh] w-full max-w-lg overflow-y-auto bg-deep border border-line-divider rounded-2xl p-6 shadow-2xl"
         onClick={(event) => event.stopPropagation()}
       >
-        {/* زر الإغلاق */}
         <button
           type="button"
           onClick={onClose}
           aria-label="Close details"
-          className="absolute right-4 top-4 z-10 flex size-9 cursor-pointer touch-manipulation select-none items-center justify-center rounded-full text-gray-400 transition-colors hover:bg-gray-800 hover:text-white"
+          className="absolute right-4 top-4 z-10 flex size-9 cursor-pointer touch-manipulation select-none items-center justify-center rounded-full text-muted-static transition-colors hover:bg-hover-fill-field hover:text-white"
         >
           <X className="size-5" />
         </button>
 
-        {/* الترويسة */}
-        <p className="text-xs font-semibold uppercase tracking-wide text-indigo-400">
+        <p className="text-xs font-semibold uppercase tracking-wide text-primary-subtle">
           CHAPTER {chapter.number}
           {chapter.isHL && (
-            <span className="ml-2 rounded-full bg-indigo-500/20 px-2 py-0.5 text-[10px] font-bold text-indigo-300">
+            <span className="ml-2 rounded-full bg-primary-pulse px-2 py-0.5 text-[10px] font-bold text-primary-whisper">
               HL
             </span>
           )}
@@ -155,25 +151,23 @@ export default function ChapterModal({
         >
           {config.modalTitle}
         </h3>
-        <p className="mt-0.5 text-sm text-gray-400">{chapter.title}</p>
+        <p className="mt-0.5 text-sm text-muted-static">{chapter.title}</p>
 
-        {/* السعر */}
         <p className="mt-2">
           <span className="text-xl font-bold text-white">Free</span>
-          <span className="ml-2 text-sm text-gray-400">
+          <span className="ml-2 text-sm text-muted-static">
             {config.accessLabel}
           </span>
         </p>
-        <p className="mt-1.5 text-xs leading-relaxed text-gray-400">
+        <p className="mt-1.5 text-xs leading-relaxed text-muted-static">
           {config.description}
         </p>
 
-        {/* نموذج بيانات الطالب */}
-        <form className="mt-6 space-y-4 border-t border-gray-800 pt-5">
+        <form className="mt-6 space-y-4 border-t border-line-divider pt-5">
           <div>
             <label
               htmlFor="checkout-name"
-              className="mb-1.5 block text-xs font-semibold uppercase tracking-wide text-gray-400"
+              className="mb-1.5 block text-xs font-semibold uppercase tracking-wide text-muted-static"
             >
               Full Name
             </label>
@@ -191,7 +185,7 @@ export default function ChapterModal({
           <div>
             <label
               htmlFor="checkout-email"
-              className="mb-1.5 block text-xs font-semibold uppercase tracking-wide text-gray-400"
+              className="mb-1.5 block text-xs font-semibold uppercase tracking-wide text-muted-static"
             >
               Email
             </label>
@@ -211,12 +205,12 @@ export default function ChapterModal({
           <div>
             <label
               htmlFor="checkout-whatsapp"
-              className="mb-1.5 block text-xs font-semibold uppercase tracking-wide text-gray-400"
+              className="mb-1.5 block text-xs font-semibold uppercase tracking-wide text-muted-static"
             >
               WhatsApp Number
             </label>
             <div
-              className={`flex items-center w-full rounded-xl border border-gray-600 bg-gray-800 px-4 transition-all focus-within:border-indigo-400 focus-within:ring-1 focus-within:ring-indigo-400 ${
+              className={`flex items-center w-full rounded-xl border border-line-strong bg-field px-4 transition-all focus-within:border-primary-subtle focus-within:ring-1 focus-within:ring-primary-subtle ${
                 formData.whatsapp && !isValidWhatsApp
                   ? "border-red-500/60"
                   : ""
@@ -230,7 +224,7 @@ export default function ChapterModal({
                 value={formData.whatsapp}
                 onChange={(value) => handleInputChange("whatsapp", value ?? "")}
                 placeholder="Enter WhatsApp number"
-                className="h-[46px] w-full [&_.PhoneInputCountry]:gap-2 [&_input]:h-full [&_input]:flex-1 [&_input]:bg-transparent [&_input]:text-sm [&_input]:text-white [&_input]:placeholder-gray-500 [&_input]:outline-none [&_select]:bg-gray-800 [&_select]:text-white"
+                className="h-11.5 w-full [&_.PhoneInputCountry]:gap-2 [&_input]:h-full [&_input]:flex-1 [&_input]:bg-transparent [&_input]:text-sm [&_input]:text-white [&_input]:placeholder-faint-static [&_input]:outline-none [&_select]:bg-field [&_select]:text-white"
               />
             </div>
             {formData.whatsapp && !isValidWhatsApp && (
@@ -243,7 +237,7 @@ export default function ChapterModal({
           <div>
             <label
               htmlFor="checkout-country"
-              className="mb-1.5 block text-xs font-semibold uppercase tracking-wide text-gray-400"
+              className="mb-1.5 block text-xs font-semibold uppercase tracking-wide text-muted-static"
             >
               Country
             </label>
@@ -268,13 +262,12 @@ export default function ChapterModal({
           </div>
         </form>
 
-        {/* زر الإرسال المشترك */}
         <div className="mt-5">
           {!isFormValid ? (
             <button
               type="button"
               disabled
-              className="flex w-full cursor-not-allowed items-center justify-center gap-2 rounded-xl bg-gray-700 px-6 py-3.5 text-sm font-semibold text-gray-400"
+              className="flex w-full cursor-not-allowed items-center justify-center gap-2 rounded-xl bg-inactive-alt px-6 py-3.5 text-sm font-semibold text-muted-static"
             >
               {config.disabledLabel}
             </button>
@@ -283,7 +276,7 @@ export default function ChapterModal({
               type="button"
               onClick={handleSubmit}
               disabled={isSubmitting}
-              className="flex w-full cursor-pointer touch-manipulation select-none items-center justify-center gap-2 rounded-xl bg-indigo-600 px-6 py-3.5 text-sm font-semibold text-white transition-colors hover:bg-indigo-700 disabled:cursor-not-allowed disabled:bg-indigo-600/60"
+              className="flex w-full cursor-pointer touch-manipulation select-none items-center justify-center gap-2 rounded-xl bg-primary px-6 py-3.5 text-sm font-semibold text-white transition-colors hover:bg-primary-hover disabled:cursor-not-allowed disabled:bg-primary/60"
             >
               {isSubmitting ? (
                 <>

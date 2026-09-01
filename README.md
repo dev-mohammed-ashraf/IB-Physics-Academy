@@ -1,38 +1,43 @@
-# Get 7 With Maha
+# Get 7 With Maha — IB Physics Tutoring Platform
 
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+A professional, high-performance landing page and lead-generation platform built for an expert IB Physics tutor. Designed to convert visitors into students through a clean UI, engaging copy, and a seamless booking experience.
 
-## Getting Started
+## 🚀 Features
 
-First, run the development server:
+- **Modern & Responsive UI:** Built with Tailwind CSS for a pixel-perfect design across all devices (Mobile, Tablet, Desktop).
+- **Dark/Light Mode:** Seamless theme switching with system preference detection using `next-themes`.
+- **Performance Optimized:** Utilizes Next.js `<Image>` component for automatic image optimization and lazy loading.
+- **Floating Action Buttons:** Persistent quick-contact shortcuts for WhatsApp and Email.
+- **Lead Capture Modal:** A smooth, interactive form for students to request free samples or enroll, featuring dynamic timezone detection.
+- **Clean Architecture:** Component-based structure ensuring high maintainability and easy future scaling.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## 🛠 Tech Stack
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- **Framework:** [Next.js](https://nextjs.org/) (App Router)
+- **Language:** [TypeScript](https://www.typescriptlang.org/)
+- **Styling:** [Tailwind CSS v4](https://tailwindcss.com/)
+- **Icons:** [Lucide React](https://lucide.dev/)
+- **Deployment:** [Vercel](https://vercel.com/)
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 💻 Getting Started
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+To run this project locally, follow these steps:
 
-## Learn More
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/your-username/get-7-with-maha.git
+   ```
 
-To learn more about Next.js, take a look at the following resources:
+2. **Install dependencies:**
+   ```bash
+   npm install
+   ```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+3. **Run the development server:**
+   ```bash
+   npm run dev
+   ```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+4. **View the project:**
+   Open http://localhost:3000 with your browser to see the result.
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.

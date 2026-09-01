@@ -27,24 +27,24 @@ const featuresData: Feature[] = [
 
 export default function Features() {
   return (
-    <section className="bg-white py-16 lg:py-14 dark:bg-gray-900">
+    <section className="bg-surface py-16 lg:py-14">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 gap-5 rounded-2xl bg-white p-6 shadow-lg shadow-indigo-100/60 ring-1 ring-gray-100 md:grid-cols-3 md:p-8 dark:bg-gray-800 dark:shadow-black/20 dark:ring-gray-700">
+        <div className="grid grid-cols-1 gap-5 rounded-2xl bg-card p-6 shadow-lg shadow-glow ring-1 ring-line-hairline md:grid-cols-3 md:p-8">
           {featuresData.map((feature) => {
             const Icon = feature.icon;
             return (
               <article
                 key={feature.id}
-                className="flex items-start gap-4 rounded-xl p-4 transition-colors hover:bg-indigo-50/50 dark:hover:bg-indigo-950/40"
+                className="flex items-start gap-4 rounded-xl p-4 transition-colors hover:bg-primary-hover-chip"
               >
-                <span className="flex size-12 shrink-0 items-center justify-center rounded-full bg-indigo-50 text-indigo-600 dark:bg-indigo-950 dark:text-indigo-400">
+                <span className="flex size-12 shrink-0 items-center justify-center rounded-full bg-primary-chip text-accent">
                   <Icon className="size-6" />
                 </span>
                 <div>
-                  <h3 className="text-base font-bold text-gray-900 sm:text-lg dark:text-white">
+                  <h3 className="text-base font-bold text-heading sm:text-lg">
                     {feature.title}
                   </h3>
-                  <p className="mt-1.5 text-sm leading-relaxed text-gray-600 dark:text-gray-400">
+                  <p className="mt-1.5 text-sm leading-relaxed text-body">
                     {feature.description}
                   </p>
                 </div>

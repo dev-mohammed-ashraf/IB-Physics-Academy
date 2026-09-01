@@ -2,12 +2,12 @@
 
 @layer components {
   .heading-animated {
-    @apply mb-6 relative inline-block font-extrabold text-gray-900 dark:text-white transition-transform duration-300 hover:-translate-y-1 cursor-default;
+    @apply mb-6 relative inline-block font-extrabold text-heading transition-transform duration-300 hover:-translate-y-1 cursor-default;
   }
 
   .heading-animated::after {
     content: '';
-    @apply absolute -bottom-5 left-1/2 -translate-x-1/2 h-1 w-1/4 rounded-full bg-indigo-600 dark:bg-indigo-400 transition-all duration-300 ease-in-out;
+    @apply absolute -bottom-5 left-1/2 -translate-x-1/2 h-1 w-1/4 rounded-full bg-accent transition-all duration-300 ease-in-out;
   }
 
   .heading-animated:hover::after {
@@ -15,41 +15,319 @@
   }
 }
 
-/* Toast entrance animation (fade in + slide down from top) */
-@keyframes toast-in {
-  from {
-    opacity: 0;
-    transform: translateY(-1.25rem);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.toast-in {
-  animation: toast-in 0.4s ease-out both;
-}
-
 @custom-variant dark (&:where(.dark, .dark *));
+
+/*
+ * Base palette — literal Tailwind v4 indigo & gray values (extracted from
+ * node_modules/tailwindcss/theme.css). Kept as plain custom properties so the
+ * semantic tokens below stay readable and are never affected by utility
+ * tree-shaking.
+ */
+:root {
+  --indigo-50: oklch(96.2% 0.018 272.314);
+  --indigo-100: oklch(93% 0.034 272.788);
+  --indigo-200: oklch(87% 0.065 274.039);
+  --indigo-300: oklch(78.5% 0.115 274.713);
+  --indigo-400: oklch(67.3% 0.182 276.935);
+  --indigo-500: oklch(58.5% 0.233 277.117);
+  --indigo-600: oklch(51.1% 0.262 276.966);
+  --indigo-700: oklch(45.7% 0.24 277.023);
+  --indigo-800: oklch(39.8% 0.195 277.366);
+  --indigo-900: oklch(35.9% 0.144 278.697);
+  --indigo-950: oklch(25.7% 0.09 281.288);
+
+  --gray-50: oklch(98.5% 0.002 247.839);
+  --gray-100: oklch(96.7% 0.003 264.542);
+  --gray-200: oklch(92.8% 0.006 264.531);
+  --gray-300: oklch(87.2% 0.01 258.338);
+  --gray-400: oklch(70.7% 0.022 261.325);
+  --gray-500: oklch(55.1% 0.027 264.364);
+  --gray-600: oklch(44.6% 0.03 256.802);
+  --gray-700: oklch(37.3% 0.034 259.733);
+  --gray-800: oklch(27.8% 0.033 256.848);
+  --gray-900: oklch(21% 0.034 264.665);
+  --gray-950: oklch(13% 0.028 261.692);
+}
 
 :root {
   --background: #ffffff;
   --foreground: #171717;
+
+  --selection-bg: #4f46e5;
+  --selection-text: #ffffff;
+
+  --scrollbar-track: #eef2ff;
+  --scrollbar-thumb: #6366f1;
+  --scrollbar-thumb-hover: #4f46e5;
+
+  /* ---- Semantic tokens · Light mode ----------------------------------- */
+  /* Primary action color (buttons) */
+  --primary: var(--indigo-600);
+  --primary-hover: var(--indigo-700);
+  --primary-alt: var(--indigo-600);
+  --primary-alt-hover: var(--indigo-700);
+  --primary-subtle: var(--indigo-400);
+  --primary-whisper: var(--indigo-300);
+  --primary-pulse: color-mix(in oklab, var(--indigo-500) 20%, transparent);
+  /* Primary accents (text / icons) */
+  --accent: var(--indigo-600);
+  --accent-icon: var(--indigo-500);
+  --accent-deep: var(--indigo-700);
+  --accent-strong: var(--indigo-700);
+  --accent-logo: var(--indigo-500);
+
+  /* Primary surfaces */
+  --primary-soft: var(--indigo-50);
+  --primary-soft-alt: var(--indigo-50);
+  --primary-chip: var(--indigo-50);
+  --primary-tint: var(--indigo-100);
+  --primary-tint-alt: var(--indigo-100);
+  --primary-hover-soft: var(--indigo-50);
+  --primary-hover-soft-alt: var(--indigo-50);
+  --primary-hover-chip: color-mix(in oklab, var(--indigo-50) 50%, transparent);
+  /* Primary lines (borders / rings) */
+  --accent-line: var(--indigo-200);
+  --accent-line-soft: var(--indigo-300);
+  --accent-line-hover: var(--indigo-300);
+  --accent-line-strong: var(--indigo-600);
+  /* Primary-tinted shadows & gradients */
+  --glow-cta: color-mix(in oklab, var(--indigo-600) 25%, transparent);
+  --glow: color-mix(in oklab, var(--indigo-100) 60%, transparent);
+  --glow-panel: color-mix(in oklab, var(--indigo-100) 50%, transparent);
+  --glow-float: color-mix(in oklab, var(--indigo-900) 30%, transparent);
+  --glow-soft: color-mix(in oklab, var(--indigo-900) 10%, transparent);
+  --glow-card: color-mix(in oklab, var(--indigo-900) 10%, transparent);
+  --glow-hero: color-mix(in oklab, var(--indigo-100) 60%, transparent);
+  --hero-start: color-mix(in oklab, var(--indigo-50) 60%, transparent);
+  --hero-mid: color-mix(in oklab, var(--indigo-50) 30%, transparent);
+  --why-start: var(--indigo-50);
+  --quote: var(--indigo-50);
+  --avatar-ring: var(--indigo-100);
+  --card-ring: color-mix(in oklab, var(--indigo-100) 60%, transparent);
+  --focus-ring: var(--indigo-500);
+  --ring-base: #ffffff;
+
+  /* Neutral surfaces */
+  --surface: #ffffff;
+  --card: #ffffff;
+  --panel: #ffffff;
+  --raised: var(--gray-50);
+  --sunken: var(--gray-50);
+  --alt: var(--gray-50);
+  --input: var(--gray-50);
+  --focus-surface: #ffffff;
+  --deep: var(--gray-900);
+  --field: var(--gray-800);
+  --inactive: var(--gray-400);
+  --inactive-alt: var(--gray-700);
+  --inverted: #ffffff;
+  --glass: color-mix(in oklab, #ffffff 95%, transparent);
+  --hover-fill: var(--gray-100);
+  --hover-fill-soft: var(--gray-50);
+  --hover-fill-field: var(--gray-800);
+
+  /* Neutral text */
+  --heading: var(--gray-900);
+  --subtle: var(--gray-700);
+  --body: var(--gray-600);
+  --body-soft: var(--gray-600);
+  --emphasis: var(--gray-800);
+  --faint: var(--gray-500);
+  --arrow: var(--gray-700);
+  --muted-static: var(--gray-400);
+  --faint-static: var(--gray-500);
+
+  /* Neutral lines (borders / rings) */
+  --line-subtle: var(--gray-100);
+  --line-card: var(--gray-200);
+  --line-card-hover: var(--gray-200);
+  --line-input: var(--gray-300);
+  --line-input-alt: var(--gray-300);
+  --line-divider: var(--gray-800);
+  --line-strong: var(--gray-600);
+  --line-hairline: var(--gray-100);
+  --line-float: var(--gray-200);
+  --line-footer: var(--gray-900);
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
+/* Toggle Colors In Dark Mode */
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;
     --foreground: #ededed;
   }
+}
+
+.dark {
+  --selection-bg: #a5b4fc;
+  --selection-text: #1e1b4b;
+
+  --scrollbar-track: #1e1b4b;
+  --scrollbar-thumb: #6366f1;
+  --scrollbar-thumb-hover: #a5b4fc;
+
+  /* ---- Semantic tokens · Dark mode overrides -------------------------- */
+  /* Primary action color (buttons) */
+  --primary-hover: var(--indigo-500);
+  --primary-alt: var(--indigo-500);
+  --primary-alt-hover: var(--indigo-600);
+  /* Primary accents (text / icons) */
+  --accent: var(--indigo-400);
+  --accent-icon: var(--indigo-400);
+  --accent-deep: var(--indigo-300);
+  --accent-strong: var(--indigo-400);
+  /* Primary surfaces */
+  --primary-soft: color-mix(in oklab, var(--indigo-950) 60%, transparent);
+  --primary-soft-alt: color-mix(in oklab, var(--indigo-900) 30%, transparent);
+  --primary-chip: var(--indigo-950);
+  --primary-tint: var(--indigo-950);
+  --primary-tint-alt: color-mix(in oklab, var(--indigo-500) 10%, transparent);
+  --primary-hover-soft: var(--gray-700);
+  --primary-hover-soft-alt: color-mix(in oklab, var(--indigo-950) 40%, transparent);
+  --primary-hover-chip: color-mix(in oklab, var(--indigo-950) 40%, transparent);
+  /* Primary lines (borders / rings) */
+  --accent-line: var(--indigo-800);
+  --accent-line-soft: var(--indigo-700);
+  --accent-line-hover: var(--indigo-600);
+  --accent-line-strong: var(--indigo-400);
+  /* Primary-tinted shadows & gradients */
+  --glow: color-mix(in oklab, #000000 20%, transparent);
+  --glow-panel: transparent;
+  --glow-float: color-mix(in oklab, #000000 40%, transparent);
+  --glow-card: transparent;
+  --glow-hero: color-mix(in oklab, var(--indigo-900) 30%, transparent);
+  --hero-start: color-mix(in oklab, var(--indigo-950) 40%, transparent);
+  --hero-mid: var(--gray-900);
+  --why-start: color-mix(in oklab, var(--indigo-950) 30%, transparent);
+  --quote: color-mix(in oklab, var(--gray-700) 30%, transparent);
+  --avatar-ring: var(--gray-700);
+  --card-ring: var(--gray-700);
+  --ring-base: var(--gray-800);
+  /* Neutral surfaces */
+  --surface: var(--gray-900);
+  --card: var(--gray-800);
+  --panel: color-mix(in oklab, var(--gray-800) 90%, transparent);
+  --raised: color-mix(in oklab, var(--gray-800) 50%, transparent);
+  --sunken: var(--gray-900);
+  --alt: var(--gray-950);
+  --input: var(--gray-700);
+  --focus-surface: var(--gray-800);
+  --inverted: var(--gray-100);
+  --glass: color-mix(in oklab, var(--gray-800) 95%, transparent);
+  --hover-fill: var(--gray-800);
+  --hover-fill-soft: var(--gray-800);
+  /* Neutral text */
+  --heading: #ffffff;
+  --subtle: var(--gray-300);
+  --body: var(--gray-400);
+  --body-soft: var(--gray-300);
+  --emphasis: var(--gray-200);
+  --faint: var(--gray-400);
+  --arrow: var(--gray-200);
+  /* Neutral lines (borders / rings) */
+  --line-subtle: var(--gray-800);
+  --line-card: var(--gray-700);
+  --line-card-hover: var(--gray-600);
+  --line-input: var(--gray-600);
+  --line-input-alt: var(--gray-700);
+  --line-hairline: var(--gray-700);
+  --line-float: var(--gray-300);
+  --line-footer: var(--gray-800);
+}
+
+/*
+ * Tailwind v4 theme registration (`inline` so utilities resolve the variable
+ * at runtime and the .dark overrides above apply automatically).
+ */
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+
+  /* Primary action color */
+  --color-primary: var(--primary);
+  --color-primary-hover: var(--primary-hover);
+  --color-primary-alt: var(--primary-alt);
+  --color-primary-alt-hover: var(--primary-alt-hover);
+  --color-primary-subtle: var(--primary-subtle);
+  --color-primary-whisper: var(--primary-whisper);
+  --color-primary-pulse: var(--primary-pulse);
+  /* Primary accents (text / icons) */
+  --color-accent: var(--accent);
+  --color-accent-icon: var(--accent-icon);
+  --color-accent-deep: var(--accent-deep);
+  --color-accent-strong: var(--accent-strong);
+  --color-accent-logo: var(--accent-logo);
+  /* Primary surfaces */
+  --color-primary-soft: var(--primary-soft);
+  --color-primary-soft-alt: var(--primary-soft-alt);
+  --color-primary-chip: var(--primary-chip);
+  --color-primary-tint: var(--primary-tint);
+  --color-primary-tint-alt: var(--primary-tint-alt);
+  --color-primary-hover-soft: var(--primary-hover-soft);
+  --color-primary-hover-soft-alt: var(--primary-hover-soft-alt);
+  --color-primary-hover-chip: var(--primary-hover-chip);
+  /* Primary lines */
+  --color-accent-line: var(--accent-line);
+  --color-accent-line-soft: var(--accent-line-soft);
+  --color-accent-line-hover: var(--accent-line-hover);
+  --color-accent-line-strong: var(--accent-line-strong);
+  /* Shadows & gradients (indigo-tinted) */
+  --color-glow-cta: var(--glow-cta);
+  --color-glow: var(--glow);
+  --color-glow-panel: var(--glow-panel);
+  --color-glow-float: var(--glow-float);
+  --color-glow-soft: var(--glow-soft);
+  --color-glow-card: var(--glow-card);
+  --color-glow-hero: var(--glow-hero);
+  --color-hero-start: var(--hero-start);
+  --color-hero-mid: var(--hero-mid);
+  --color-why-start: var(--why-start);
+  --color-quote: var(--quote);
+  --color-avatar-ring: var(--avatar-ring);
+  --color-card-ring: var(--card-ring);
+  --color-focus-ring: var(--focus-ring);
+  --color-ring-base: var(--ring-base);
+  /* Neutral surfaces */
+  --color-surface: var(--surface);
+  --color-card: var(--card);
+  --color-panel: var(--panel);
+  --color-raised: var(--raised);
+  --color-sunken: var(--sunken);
+  --color-alt: var(--alt);
+  --color-input: var(--input);
+  --color-focus-surface: var(--focus-surface);
+  --color-deep: var(--deep);
+  --color-field: var(--field);
+  --color-inactive: var(--inactive);
+  --color-inactive-alt: var(--inactive-alt);
+  --color-inverted: var(--inverted);
+  --color-glass: var(--glass);
+  --color-hover-fill: var(--hover-fill);
+  --color-hover-fill-soft: var(--hover-fill-soft);
+  --color-hover-fill-field: var(--hover-fill-field);
+  /* Neutral text */
+  --color-heading: var(--heading);
+  --color-subtle: var(--subtle);
+  --color-body: var(--body);
+  --color-body-soft: var(--body-soft);
+  --color-emphasis: var(--emphasis);
+  --color-faint: var(--faint);
+  --color-arrow: var(--arrow);
+  --color-muted-static: var(--muted-static);
+  --color-faint-static: var(--faint-static);
+  /* Neutral lines */
+  --color-line-subtle: var(--line-subtle);
+  --color-line-card: var(--line-card);
+  --color-line-card-hover: var(--line-card-hover);
+  --color-line-input: var(--line-input);
+  --color-line-input-alt: var(--line-input-alt);
+  --color-line-divider: var(--line-divider);
+  --color-line-strong: var(--line-strong);
+  --color-line-hairline: var(--line-hairline);
+  --color-line-float: var(--line-float);
+  --color-line-footer: var(--line-footer);
 }
 
 body {
@@ -59,8 +337,8 @@ body {
 }
 
 ::selection {
-  background-color: #4f46e5;
-  color: #ffffff;
+  background-color: var(--selection-bg);
+  color: var(--selection-text);
 }
 
 ::-webkit-scrollbar {
@@ -69,42 +347,20 @@ body {
 }
 
 ::-webkit-scrollbar-track {
-  background: #eef2ff;
+  background: var(--scrollbar-track);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #6366f1;
+  background: var(--scrollbar-thumb);
   border-radius: 8px;
-  border: 2px solid #eef2ff;
+  border: 2px solid var(--scrollbar-track);
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #4f46e5;
+  background: var(--scrollbar-thumb-hover);
 }
 
 html {
   scrollbar-width: thin;
-  scrollbar-color: #6366f1 #eef2ff;
-}
-
-.dark ::selection {
-  background-color: #a5b4fc;
-  color: #1e1b4b;
-}
-
-.dark ::-webkit-scrollbar-track {
-  background: #1e1b4b;
-}
-
-.dark ::-webkit-scrollbar-thumb {
-  background: #6366f1;
-  border-color: #1e1b4b;
-}
-
-.dark ::-webkit-scrollbar-thumb:hover {
-  background: #a5b4fc;
-}
-
-html.dark {
-  scrollbar-color: #6366f1 #1e1b4b;
+  scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);
 }
