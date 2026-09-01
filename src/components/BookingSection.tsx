@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import type { FormEvent } from "react";
 import { Lock, LoaderCircle } from "lucide-react";
 import { getCountries } from "react-phone-number-input";
@@ -12,13 +12,8 @@ const globalCountries = (getCountries() as Array<keyof typeof en>)
   .map((country) => en[country])
   .sort((a, b) => a.localeCompare(b));
 
-interface TimezoneOption {
-  value: string;
-  label: string;
-}
-
 export default function BookingSection() {
-  let timezones: TimezoneOption[] = [];
+  const [timezones, setTimezones] = useState<{ value: string; label: string }[]>([]);
 
   const [formData, setFormData] = useState({
     name: "",
@@ -30,21 +25,24 @@ export default function BookingSection() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
 
-  const calculatedTimezones = Intl.supportedValuesOf("timeZone").map((tz) => {
-    const formatter = new Intl.DateTimeFormat("en", {
-      timeZone: tz,
-      timeZoneName: "shortOffset",
-    });
-    const parts = formatter.formatToParts(new Date());
-    const offsetString =
-      parts.find((part) => part.type === "timeZoneName")?.value || "";
+  // Calculate offsets on the client only to avoid SSR hydration mismatch
+  useEffect(() => {
+    const zones = Intl.supportedValuesOf("timeZone").map((tz) => {
+      const formatter = new Intl.DateTimeFormat("en", {
+        timeZone: tz,
+        timeZoneName: "shortOffset",
+      });
+      const parts = formatter.formatToParts(new Date());
+      const offsetString =
+        parts.find((part) => part.type === "timeZoneName")?.value || "";
 
-    return {
-      value: tz,
-      label: `${tz.replace(/_/g, " ")} ${offsetString ? `(${offsetString})` : ""}`,
-    };
-  });
-  timezones = calculatedTimezones;
+      return {
+        value: tz,
+        label: `${tz.replace(/_/g, " ")} ${offsetString ? `(${offsetString})` : ""}`,
+      };
+    });
+    setTimezones(zones);
+  }, []);
 
   const isValidEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email.trim());
   const isFormValid =
@@ -225,7 +223,7 @@ export default function BookingSection() {
                       <option value="" disabled>
                         Select your timezone
                       </option>
-                      {timezones.map((tz) => (
+                      {timezones?.map((tz) => (
                         <option key={tz.value} value={tz.value}>
                           {tz.label}
                         </option>
